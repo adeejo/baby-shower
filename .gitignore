@@ -1,0 +1,5 @@
+.venv
+.vscode
+__pycache__
+static/
+__init__.py

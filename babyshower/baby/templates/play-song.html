@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Sorting Hat</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
+</head>
+<body>
+    <div class="center-content">
+        <div class="fixed-at-top">
+            <h1>Which House will it be?</h1>
+        </div>
+
+
+        <!-- Apply the CSS class to center-align the audio player -->
+        <div class="center-audio" id="audio-container" style="display: none;">
+            <audio id="audio-player" controls autoplay>
+                <source src="{% static 'music/' %}{{ music_file }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="center-button">
+            <button id="play-button">
+                <!-- <img src="{% static 'images/button.png' %}" alt="img",height="50%" width="20%" > -->
+            </button>
+        </div>
+    </div>
+
+    
+    
+    <script>
+        // Get the counter value from the rendered HTML
+        
+    
+        // Event listener for the "Play" button
+        document.getElementById('play-button').addEventListener('click', function() {
+            // run this to clear local storage localStorage.clear(); 
+            // Increment the counter and update the URL
+            var counter = parseInt(localStorage.getItem('counter')) || 0;
+            console.log('Button clicked'); // Add this line to check if the code runs
+            
+            counter++;
+            localStorage.setItem('counter', counter);
+            window.history.replaceState({}, document.title, '?counter=' + counter);
+    
+            // Refresh the page to get a new random song with the updated counter
+            location.reload();
+        });
+    </script>
+    
+</body>
+</html>
